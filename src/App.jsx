@@ -1,60 +1,51 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { api } from "./api/api";
+import { Navigate, useNavigate } from "react-router";
 import Style from "./App.module.css";
 
 function App() {
-  const [data, setData] = useState([]);
-  const [data2, setData2] = useState([]);
+  const navigate = useNavigate();
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [user, setUser] = useState(null)
+  const [message, setMessage] = useState('')
 
   useEffect(() => {
-    api.get("/delicia").then((res) => {
-      setData(res.data.results);
-    });
-  }, []);
+    const storedUser = localStorage.getItem('user')
+      if(storedUser){
+        setUser(JSON.parse(storedUser))
+        navigate('/userslist')
+      }
+  }, [navigate])
+  
 
-  useEffect(() => {
-    api.get("/funcionarios").then((res) => {
-      setData2(res.data.items);
-      console.log(res.data.items);
-    });
-  }, []);
+  const handleLogin = async (e) => {
+    e.preventDefault()
+    try {
+      const response = await api.post('/login', { email, password })
+      const user = response.data
+
+      localStorage.setItem('user', JSON.stringify(user))
+      setUser(user)
+      navigate('/usersList')
+      console.log(response.data)
+
+    } catch (error) {
+      setMessage('Erro ao login: ' + (error.response?.data?.message || 'verifique seus dados'))
+    }
+  }
 
   return (
     <>
-      <div className={Style.containerTudo}>
-      <div className={Style.container1}>
-        
-        {data.map((item) => {
-          return (
-           <div key={item.id} className={Style.containerAuto}>                  
-                <h3>{item.nome}</h3>
-                <img src={item.imagem} alt="image" className={Style.image} />
-            </div>
-    
-          );
-        })}
-       </div>
-        <br />
-        <br />
-        <br />
-        <div className={Style.container2}>
-        {data2.map((item) => {
-          return (
-            <div key={item.id}>
-              <h3>{item.nome}</h3>
-              <p>{item.cargo}</p>
-              <p>{item.idade}</p>
-              <p>{item.custoPorHora}</p>
-              <p>{item.temLicence ? "Habilitado 😁" : "Sem premissao 🤬"}</p>
-            </div>
-          );
-        })}
-        </div >
-     
-
-        <br />
-        <br />
-        <br />
+      <div style={{ padding: '2rem' }}>
+        <form onSubmit={handleLogin} >
+          <h2>Login</h2>
+          <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          <input type="password" placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          <button type="submit">Entrar</button>
+          <p>{message}</p>
+        </form>
       </div>
     </>
   );
