@@ -38,14 +38,25 @@ function App() {
 
   return (
     <>
-      <div style={{ padding: '2rem' }}>
+
+    <div className={Style.wrapLogin}>
+
+   
+    <div className={Style.wrapImg}>
+      <div className={Style.wrapDegrade}>
+
+      </div>
+    </div>
+      <div className={Style.wrapForm}>
         <form onSubmit={handleLogin} >
           <h2>Login</h2>
           <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
           <input type="password" placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)} required />
           <button type="submit">Entrar</button>
+          <p className={Style.userCad}>Cadastrar usuário</p>
           <p>{message}</p>
         </form>
+      </div>
       </div>
     </>
   );

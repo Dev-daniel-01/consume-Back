@@ -40,7 +40,7 @@ function UsersList() {
         fetchList()
     }, [])
 
-    if (loading) return <p>carregando usuarios...</p>
+    if (loading) return <p>carregando...</p>
     if (error) return <p>{error}</p>
 
     return (
@@ -62,7 +62,7 @@ function UsersList() {
                 <ul>
                     {lists.map((item) => (
                         <li key={item.id}>
-                            <strong>{item.description}</strong> - <br /><i>{item.price}</i> - <br /><i>{item.quantity}</i> - <br /><img src={item.image} alt="image" />
+                            <strong>{item.description}</strong> - <br /><i>{item.price}</i> - <br /><i>{item.quantity}</i> - <br /><img src={item.image} alt="image" style={{width: 200, height: 200}}/>
                         </li>
                     )
                     )}
