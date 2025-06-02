@@ -1,0 +1,68 @@
+.navBar{
+    background-color: var(--dark);
+    min-width: 200px;
+    height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+   
+}
+
+.navBar img{
+    width: 30px;
+    height: auto;
+    opacity: 0.7;
+}
+
+.navBar img:hover{
+    cursor: pointer;
+    opacity: 1;
+}
+
+.navBar p{
+    opacity: 0.7;
+    border: 2px solid transparent;
+    padding: 5px;
+    border-radius: 5px;
+    transition: all 100ms ease-in-out;
+}
+
+.navBar p:hover{
+    opacity: 1;
+    border: 2px solid var(--light);
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+ /* menu fechado */
+
+ .navBarClosed {
+    background-color: var(--dark);
+    width: auto;
+    height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    transition: all 200ms ease-in-out;
+}
+
+ .navBarClosed img {
+    width: 30px;
+    height: auto;
+    opacity: 0.7;
+ }
+
+ .navBarClosed img:hover{
+    opacity: 1;
+    cursor: pointer;
+ }
+
+ .navBarClosed p {
+    display: none;
+ }
+
