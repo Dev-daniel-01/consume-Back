@@ -10,6 +10,7 @@ function App() {
   const [password, setPassword] = useState("");
   const [user, setUser] = useState(null);
   const [message, setMessage] = useState("");
+  const [showPassword, setShowPassword] = useState(false)
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -38,7 +39,7 @@ function App() {
   };
 
   return (
-    <>
+    <> 
       <div className={Style.wrapLogin}>
         <div className={Style.wrapImg}>
           <div className={Style.degrade}></div>
@@ -53,21 +54,24 @@ function App() {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <input
-              type="password"
+            <div style={{position: 'relative', width: '100%'}}>
+            <input 
+              type={showPassword ? 'text' : 'password'}
               placeholder="Senha"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
+            <p onClick={() => setShowPassword(prev => !prev)} style={{position: 'absolute', width: '20px', cursor: 'pointer', right: '10px', top: '9px'}}>👁</p>
+            </div>
             <button type="submit">Entrar</button>
             <p className={Style.userCad}>Cadastrar usuário</p>
             <p>{message}</p>
           </form>
         </div>
       </div>
-    </>
-  );
-}
+      </>
+  )
+};
 
 export default App;

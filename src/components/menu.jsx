@@ -22,9 +22,9 @@ export const Menu = () => {
             <img src={menuImg} alt="menuImg" onClick={() => setOpen(prev => !prev)}/>
             <p onClick={gotoDashboard}>Dashboard</p>
             <p>Criar Usuário</p>
-            <p onClick={gotoUsers}>Lista de Usuários</p>
+            <p onClick={gotoUsers}>Usuários</p>
             <p>Criar Produto</p>
-            <p  onClick={gotoList}>Lista de Produtos</p>
+            <p  onClick={gotoList}>Produtos</p>
             <p onClick={logout}>Sair</p>
         </nav>
     )
