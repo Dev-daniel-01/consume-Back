@@ -8,6 +8,7 @@ import App from './App.jsx'
 import  UsersList from './usersList.jsx'
 import  Dashboard  from './dashboard.jsx'
 import List from './productList.jsx'
+import UsersCreate from './UsersCreate.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -17,6 +18,7 @@ createRoot(document.getElementById('root')).render(
             <Route path='/dashboard' element={<Dashboard />}/>
             <Route path='/usersList' element={<UsersList />}/>
             <Route path='/list' element={<List />}/>
+            <Route path='/usersCreate' element={<UsersCreate/>}></Route>
 
         </Routes>
       </BrowserRouter>

@@ -65,7 +65,7 @@ function App() {
             <p onClick={() => setShowPassword(prev => !prev)} style={{position: 'absolute', width: '20px', cursor: 'pointer', right: '10px', top: '9px'}}>👁</p>
             </div>
             <button type="submit">Entrar</button>
-            <p className={Style.userCad}>Cadastrar usuário</p>
+            <p className={Style.userCad} onClick={() => navigate("/usersCreate")}>Cadastrar usuário</p>
             <p>{message}</p>
           </form>
         </div>
